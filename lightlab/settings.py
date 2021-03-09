@@ -14,7 +14,7 @@ SECRET_KEY = 'j(6s_mmpw*$*xta+8@8k_!wpt#gh)&4%$umlk+s2_8o6pquk&='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -117,7 +117,7 @@ STATICFILES_DIRS= [
     os.path.join(BASE_DIR, 'assets/')
 ]
 
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 
 #Emails settings

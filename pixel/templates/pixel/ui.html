@@ -1,0 +1,433 @@
+{% extends "interface/base.html" %}
+{% load static %}
+
+
+{% block contents %}
+    <section class="section-wrap">
+        <div class="container full_screen">
+            <div id="main_ui">
+                <div class="main_box images">
+                    <h5 class="heading">Photo</h5>
+                    <div class="inner_box">
+                        <div class="img_box">
+                            <p>Drop a JPG file here</p>
+                            <small>or</small>
+                            <form action="" class="d-none">
+                                <input type="file" id="image_file">
+                            </form>
+                            <a href="#" class="btn btn--lg btn--alt-color btn--small btn--button">Browse files</a>
+                        </div>
+                        <div class="example_gallery">
+                            <h6 class="head">Try <a href="{% url 'gallery' %}">example images</a></h6>
+                            <div class="images">
+                                <div class="image_box">
+                                    <img src="{% static 'img/20160511-DSC02002_thumb.jpg' %}" alt="">
+                                </div>
+                                <div class="image_box">
+                                    <img src="{% static 'img/20160511-DSC02002_thumb.jpg' %}" alt="">
+                                </div>
+                                <div class="image_box">
+                                    <img src="{% static 'img/20160511-DSC02002_thumb.jpg' %}" alt="">
+                                </div>
+                                <div class="image_box">
+                                    <img src="{% static 'img/20160511-DSC02002_thumb.jpg' %}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="main_box exif">
+                    <h5 class="heading">Camera Settings (EXIF)</h5>
+                    <div class="inner_box">
+                        <div class="data_value">
+                            <p>Camera model</p>
+                            <p class="value"><span class="data">—</span></p>
+                        </div>
+                        <div class="data_value">
+                            <p>Lens</p>
+                            <p class="value"><span class="data">—</span></p>
+                        </div>
+                        <div class="data_value flexed">
+                            <div class="sided_box">
+                                <p>Focal length</p>
+                                <p class="value"><span class="data">—</span></p>
+                            </div>
+                            <div class="sided_box">
+                                <p>Aperture</p>
+                                <p class="value">ƒ/<span class="data">—</span></p>
+                            </div>
+                            <div class="sided_box">
+                                <p>Shutter speed</p>
+                                <p class="value"><span class="data">—</span></p>
+                            </div>
+                            <div class="sided_box">
+                                <p>ISO</p>
+                                <p class="value"><span class="data">—</span>s</p>
+                            </div>
+                        </div>
+                        <div class="data_value">
+                            <p>Metering mode</p>
+                            <p class="value"><span class="data">—</span></p>
+                        </div>
+                        <div class="data_value">
+                            <p>Exposure program</p>
+                            <p class="value"><span class="data">—</span></p>
+                        </div>
+                        <div class="data_value">
+                            <p>Exposure compensation</p>
+                            <p class="value"><span class="data">—</span></p>
+                        </div>
+                        <div class="data_value">
+                            <p>Flash</p>
+                            <p class="value"><span class="data">—</span></p>
+                        </div>
+                        <div class="data_value">
+                            <p>Software</p>
+                            <p class="value"><span class="data">—</span></p>
+                        </div>
+                        <div class="data_value">
+                            <p>Taken at</p>
+                            <p class="value"><span class="data">—</span></p>
+                        </div>
+                        <div class="data_value">
+                            <p>Copyright</p>
+                            <p class="value"><span class="data">—</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="main_box filters">
+                    <h5 class="heading">Photo</h5>
+                    <div class="inner_box">
+                        <div class="filter_box">
+                            <h6 class="head">Basic</h6>
+                            <p>White Balance</p>
+                            <p>Temperature</p>
+                            <div class="ranger">
+                                <p class="key">Tint</p>
+                                <div class="the_range">
+                                    <div class="slidecontainer">
+                                        <input type="range" disabled min="1" max="100" value="50" class="slider" id="myRange">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class='centered'>Tone</p>
+                            <div class="ranger">
+                                <p class="key">Exposure</p>
+                                <div class="the_range">
+                                    <div class="slidecontainer">
+                                        <input type="range" disabled min="1" max="100" value="50" class="slider" id="myRange">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ranger">
+                                <p class="key">Contrast</p>
+                                <div class="the_range">
+                                    <div class="slidecontainer">
+                                        <input type="range" disabled min="1" max="100" value="50" class="slider" id="myRange">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class='centered'></p>
+                            <div class="ranger">
+                                <p class="key">Highlights</p>
+                                <div class="the_range">
+                                    <div class="slidecontainer">
+                                        <input type="range" disabled min="1" max="100" value="50" class="slider" id="myRange">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ranger">
+                                <p class="key">Shadows</p>
+                                <div class="the_range">
+                                    <div class="slidecontainer">
+                                        <input type="range" disabled min="1" max="100" value="50" class="slider" id="myRange">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ranger">
+                                <p class="key">Whites</p>
+                                <div class="the_range">
+                                    <div class="slidecontainer">
+                                        <input type="range" disabled min="1" max="100" value="50" class="slider" id="myRange">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ranger">
+                                <p class="key">Blacks</p>
+                                <div class="the_range">
+                                    <div class="slidecontainer">
+                                        <input type="range" disabled min="1" max="100" value="50" class="slider" id="myRange">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class='centered'>Presence</p>
+                            <div class="ranger">
+                                <p class="key">Clarity</p>
+                                <div class="the_range">
+                                    <div class="slidecontainer">
+                                        <input type="range" disabled min="1" max="100" value="50" class="slider" id="myRange">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ranger">
+                                <p class="key">Vibrance</p>
+                                <div class="the_range">
+                                    <div class="slidecontainer">
+                                        <input type="range" disabled min="1" max="100" value="50" class="slider" id="myRange">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ranger">
+                                <p class="key">Saturation</p>
+                                <div class="the_range">
+                                    <div class="slidecontainer">
+                                        <input type="range" disabled min="1" max="100" value="50" class="slider" id="myRange">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h6 class="head mt">Tone Curve</h6>
+                            <p class='centered'>Region</p>
+                            <div class="ranger">
+                                <p class="key">Highlights</p>
+                                <div class="the_range">
+                                    <div class="slidecontainer">
+                                        <input type="range" disabled min="1" max="100" value="50" class="slider" id="myRange">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ranger">
+                                <p class="key">Lights</p>
+                                <div class="the_range">
+                                    <div class="slidecontainer">
+                                        <input type="range" disabled min="1" max="100" value="50" class="slider" id="myRange">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ranger">
+                                <p class="key">Darks</p>
+                                <div class="the_range">
+                                    <div class="slidecontainer">
+                                        <input type="range" disabled min="1" max="100" value="50" class="slider" id="myRange">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ranger">
+                                <p class="key">Shadows</p>
+                                <div class="the_range">
+                                    <div class="slidecontainer">
+                                        <input type="range" disabled min="1" max="100" value="50" class="slider" id="myRange">
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+                            <h6 class="head mt">HSL</h6>
+
+                            <p class='centered'>Hue</p>
+                            <div class="ranger">
+                                <p class="key">Red</p>
+                                <div class="the_range">
+                                    <div class="slidecontainer">
+                                        <input type="range" disabled min="1" max="100" value="50" class="slider" id="myRange">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ranger">
+                                <p class="key">Orange</p>
+                                <div class="the_range">
+                                    <div class="slidecontainer">
+                                        <input type="range" disabled min="1" max="100" value="50" class="slider" id="myRange">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ranger">
+                                <p class="key">Yellow</p>
+                                <div class="the_range">
+                                    <div class="slidecontainer">
+                                        <input type="range" disabled min="1" max="100" value="50" class="slider" id="myRange">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ranger">
+                                <p class="key">Green</p>
+                                <div class="the_range">
+                                    <div class="slidecontainer">
+                                        <input type="range" disabled min="1" max="100" value="50" class="slider" id="myRange">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ranger">
+                                <p class="key">Aqua</p>
+                                <div class="the_range">
+                                    <div class="slidecontainer">
+                                        <input type="range" disabled min="1" max="100" value="50" class="slider" id="myRange">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ranger">
+                                <p class="key">Blue</p>
+                                <div class="the_range">
+                                    <div class="slidecontainer">
+                                        <input type="range" disabled min="1" max="100" value="50" class="slider" id="myRange">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ranger">
+                                <p class="key">Purple</p>
+                                <div class="the_range">
+                                    <div class="slidecontainer">
+                                        <input type="range" disabled min="1" max="100" value="50" class="slider" id="myRange">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ranger">
+                                <p class="key">Magenta</p>
+                                <div class="the_range">
+                                    <div class="slidecontainer">
+                                        <input type="range" disabled min="1" max="100" value="50" class="slider" id="myRange">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class='centered'>Saturation</p>
+                            <div class="ranger">
+                                <p class="key">Red</p>
+                                <div class="the_range">
+                                    <div class="slidecontainer">
+                                        <input type="range" disabled min="1" max="100" value="50" class="slider" id="myRange">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ranger">
+                                <p class="key">Orange</p>
+                                <div class="the_range">
+                                    <div class="slidecontainer">
+                                        <input type="range" disabled min="1" max="100" value="50" class="slider" id="myRange">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ranger">
+                                <p class="key">Yellow</p>
+                                <div class="the_range">
+                                    <div class="slidecontainer">
+                                        <input type="range" disabled min="1" max="100" value="50" class="slider" id="myRange">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ranger">
+                                <p class="key">Green</p>
+                                <div class="the_range">
+                                    <div class="slidecontainer">
+                                        <input type="range" disabled min="1" max="100" value="50" class="slider" id="myRange">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ranger">
+                                <p class="key">Aqua</p>
+                                <div class="the_range">
+                                    <div class="slidecontainer">
+                                        <input type="range" disabled min="1" max="100" value="50" class="slider" id="myRange">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ranger">
+                                <p class="key">Blue</p>
+                                <div class="the_range">
+                                    <div class="slidecontainer">
+                                        <input type="range" disabled min="1" max="100" value="50" class="slider" id="myRange">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ranger">
+                                <p class="key">Purple</p>
+                                <div class="the_range">
+                                    <div class="slidecontainer">
+                                        <input type="range" disabled min="1" max="100" value="50" class="slider" id="myRange">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ranger">
+                                <p class="key">Magenta</p>
+                                <div class="the_range">
+                                    <div class="slidecontainer">
+                                        <input type="range" disabled min="1" max="100" value="50" class="slider" id="myRange">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class='centered'>Luminance</p>
+                            <div class="ranger">
+                                <p class="key">Red</p>
+                                <div class="the_range">
+                                    <div class="slidecontainer">
+                                        <input type="range" disabled min="1" max="100" value="50" class="slider" id="myRange">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ranger">
+                                <p class="key">Orange</p>
+                                <div class="the_range">
+                                    <div class="slidecontainer">
+                                        <input type="range" disabled min="1" max="100" value="50" class="slider" id="myRange">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ranger">
+                                <p class="key">Yellow</p>
+                                <div class="the_range">
+                                    <div class="slidecontainer">
+                                        <input type="range" disabled min="1" max="100" value="50" class="slider" id="myRange">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ranger">
+                                <p class="key">Green</p>
+                                <div class="the_range">
+                                    <div class="slidecontainer">
+                                        <input type="range" disabled min="1" max="100" value="50" class="slider" id="myRange">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ranger">
+                                <p class="key">Aqua</p>
+                                <div class="the_range">
+                                    <div class="slidecontainer">
+                                        <input type="range" disabled min="1" max="100" value="50" class="slider" id="myRange">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ranger">
+                                <p class="key">Blue</p>
+                                <div class="the_range">
+                                    <div class="slidecontainer">
+                                        <input type="range" disabled min="1" max="100" value="50" class="slider" id="myRange">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ranger">
+                                <p class="key">Purple</p>
+                                <div class="the_range">
+                                    <div class="slidecontainer">
+                                        <input type="range" disabled min="1" max="100" value="50" class="slider" id="myRange">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ranger">
+                                <p class="key">Magenta</p>
+                                <div class="the_range">
+                                    <div class="slidecontainer">
+                                        <input type="range" disabled min="1" max="100" value="50" class="slider" id="myRange">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

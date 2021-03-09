@@ -1,0 +1,34 @@
+{% extends "interface/base.html" %}
+{% load static %}
+
+
+{% block contents %}
+    <section class="section-wrap" id="presetfinder">
+        <div class="container">
+            <div class="flexed">
+                <div class="one">
+                    <h3>Lightroom Preset Finder</h3>
+                    <p>Want to find out which Lightroom preset was used on the given photo? <strong>Preset Finder aims to help you with that.</strong></p>
+                    <p>Simply upload the presets you want to compare against and next time you check a photo here, the app will show you if there's a matching preset found.</p>
+                    <p>This feature is intended for those who already own preset packs.</p>
+                    <p><strong>Presets you upload to Pixel Peeper are never shared with other users.</strong> They are available for your eyes only.</p>
+                    <div class="premium_only">
+                        <p>Preset finder is available for <a href="#">Premium accounts</a> only.</p>
+                    </div>
+                </div>
+                <div class="two">
+                    <img src="{% static 'img/preset-finder-upload.png' %}" alt="">
+                    <h6>Upload instructions</h6>
+                    <ol>
+                        <li>Open Lightroom</li>
+                        <li>Select "Develop" module</li>
+                        <li>Right-click on a selected preset ("Presets" section on the left)</li>
+                        <li>Click "Show in Finder" (or "Show in Explorer" on Windows)</li>
+                        <li>Drag selected presets (xmp or .lrtemplate files) onto the area on the left</li>
+                    </ol>
+                    <p>That's it! Next time you check an image, Preset Finder will do its magic.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

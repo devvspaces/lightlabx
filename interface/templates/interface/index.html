@@ -1,0 +1,364 @@
+{% extends "interface/base.html" %}
+{% load static %}
+{% block triangle %}
+  <!-- Triangle Image -->
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+    viewBox="0 0 600 480" style="enable-background:new 0 0 600 480;" xml:space="preserve" class="triangle-img triangle-img--align-right">
+    <g>
+      <path class="st0" d="M232.16,108.54,76.5,357.6C43.2,410.88,81.5,480,144.34,480H455.66c62.83,0,101.14-69.12,67.84-122.4L367.84,108.54C336.51,58.41,263.49,58.41,232.16,108.54Z" fill="url(#img1)" />
+      <path class="st0" d="M232.16,108.54,76.5,357.6C43.2,410.88,81.5,480,144.34,480H455.66c62.83,0,101.14-69.12,67.84-122.4L367.84,108.54C336.51,58.41,263.49,58.41,232.16,108.54Z" fill="url(#triangle-gradient)" fill-opacity="0.7" />
+    </g>
+    <defs>
+      <pattern id="img1" patternUnits="userSpaceOnUse" width="500" height="500">
+        <image xlink:href="img/hero/hero.jpg" x="50" y="70" width="500" height="500"></image>
+      </pattern>
+
+      <linearGradient id="triangle-gradient" y2="100%" x2="0" y1="50%" gradientUnits="userSpaceOnUse" >
+      <stop offset="0" stop-color="#4C86E7"/>
+      <stop offset="1" stop-color="#B939E5"/>
+      </linearGradient>
+    </defs>
+  </svg>
+{% endblock %}
+
+
+{% block contents %}      
+  <!-- Hero -->
+  <section class="hero">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5 offset-lg-1 mt-3">
+          <div class="hero__text-holder">
+            <h1 class="hero__title hero__title--boxed">Learn How to Edit Like A Pro Photographer.</h1>
+            <h2 class="hero__subtitle">LightLab let's you recover Lightroom edits and camera settings from Images.</h2>
+            <a href="{% url 'faq' %}" class="hero__btn btn btn--lg btn--color btn--icon">
+              <span>Try LightLab Now</span>
+              <i class="ui-arrow-right"></i>
+            </a>
+          </div>              
+        </div>
+        <div class="col-lg-5 offset-lg-1">
+            <img src="{% static 'img/hero.PNG' %}" alt="lightlab lightroom preset Download">
+        </div>
+      </div>
+    </div>
+  </section> <!-- end hero -->
+
+  <section class="section-wrap usages">
+    <div class="row">
+      <div class="col-md-8 col-lg-5 offset-lg-1 offset-md-1">
+        <h4 class="">Use LightLab to:</h4>
+        <ul>
+          <li>
+            <span class="icon"><i class="fas fa-lightbulb"></i></span>
+            learn how other photographers edit their photos in Lightroom and recreate "the look"
+          </li>
+          <li>
+            <span class="icon"><i class="fas fa-rocket"></i></span>
+            improve your photo editing skills
+          </li>
+          <li>
+            <span class="icon"><i class="fas fa-images"></i></span>
+            turn JPG files into Lightroom presets (desktop and mobile)
+          </li>
+          <li>
+            <span class="icon"><i class="fas fa-camera"></i></span>
+            find out what camera model, lens and other settings photographer used
+          </li>
+          <li>
+            <span class="icon"><i class="fas fa-search"></i></span>
+            find out which Lightroom preset was used on the given photo
+          </li>
+          <li>
+            <span class="icon"><i class="fas fa-cloud-download-alt"></i></span>
+            recover lost work (e.g. lost presets can sometimes be recovered from JPGs)
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-8 col-lg-5 offset-lg-1 offset-md-1">
+          <h4>How does it work?</h4>
+          <p>LightLab reads metadata embedded in JPG files (Exif and XMP).</p>
+          <ol>
+            <li>You need a JPG file edited in Adobe Lightroom</li>
+            <li>JPG file must include metadata</li>
+          </ol>
+          <p>
+            If any of the conditions above isn't met, LightLab won't show you any results. And sometimes,
+            finding images with metadata can take a bit of luck, so we have a bunch of example photos to get you started.
+          </p>
+          <p>
+            Please refer to Frequently Asked Questions for more information on how LightLab works.
+          </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Boxes -->
+  <section class="section-wrap pb-72 pb-lg-40">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-7">
+          <div class="title-row">
+            <h2 class="section-title text-center">
+              Do you want to <span class="highlight">design better images</span> by yourself? We know the solution.
+            </h2>
+          </div>              
+        </div>            
+      </div>          
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="feature box-shadow hover-up hover-line">
+            <span class="feature__icon"><i class="fas fa-search"></i></span>
+            <h4 class="feature__title">Make your Research</h4>
+            <p class="feature__text">We also provide tangible results on your images, help you find neccesary information 
+              on the image.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="feature box-shadow hover-up hover-line">
+            <span class="feature__icon"><i class="fas fa-cloud-download-alt"></i></span>
+            <h4 class="feature__title">Use presets</h4>
+            <p class="feature__text">We also help you get the Lightroom preset used on an image, which you can download, import
+              in Lightroom and use on any image of your choice.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="feature box-shadow hover-up hover-line">
+            <span class="feature__icon"><i class="fas fa-search"></i></span>
+            <h4 class="feature__title">Sales growth</h4>
+            <p class="feature__text">We also provide tangible results and measurable long-term value business.</p>
+          </div>
+        </div>
+      </div>
+    </div>        
+  </section> <!-- end service boxes -->
+
+  <!-- Promo Section -->
+  <section class="section-wrap promo-section promo-section--pb-large pt-lg-40">
+
+    <!-- Triangle Image -->
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        viewBox="0 0 600 480" style="enable-background:new 0 0 600 480;" xml:space="preserve" class="triangle-img triangle-img--align-left">
+      <g>
+        <path class="st0" d="M232.16,108.54,76.5,357.6C43.2,410.88,81.5,480,144.34,480H455.66c62.83,0,101.14-69.12,67.84-122.4L367.84,108.54C336.51,58.41,263.49,58.41,232.16,108.54Z" fill="url(#img2)" />
+      </g>
+      <defs>
+        <pattern id="img2" patternUnits="userSpaceOnUse" width="600" height="600">
+          <image xlink:href="img/promo/promo_img_1.jpg" width="600" height="600"></image>
+        </pattern>
+      </defs>    
+    </svg>
+
+    <div class="container">
+      <div class="row justify-content-end">
+        <div class="col-lg-6">
+          <h2 class="promo-section__title promo-section__title--boxed">Learn Lightroom Editing with our Gallery</h2>
+          <p class="promo-section__text lead">Our gallery of example photos will give you a variety of styles to learn from. As a bonus, our examples include unedited (before) versions as well!</p>
+          <a href="{% url 'gallery' %}" class="btn btn--lg btn--color btn--icon">
+            <span>Browse our Example Photos</span>
+            <i class="ui-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div> 
+  </section> <!-- end promo section -->
+
+
+  <section class="section-wrap" id="dribble">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <h2>Download and Install Lightoom Presets</h2>
+          <p>If viewing the settings isn't enough, you can download them as Lightroom presets and apply to your own photos!</p>
+          <div class="preset-img">
+            <img src="{% static 'img/download-preset.png' %}" alt="">
+            <a class="captioning" href="{% url 'gallery' %}">Try our Free Lightroom Presets.</a>
+            <p>
+              LightLab gives you the option to download settings from JPG files as XMP presets. You can import presets to Lightroom and apply them to your own photos.
+
+              The default option doesn't include settings like White Balance, Exposure, Sharpening, Lens Corrections.
+
+              If you need these settings, you have the option to download an "extended" preset file.
+
+              For older versions of Lightroom, there's also a .lrtemplate variant.
+
+              Note: LightLab presets are intended to be generic, so they don't include local corrections (crops, spot removals, graduated and radial filters).
+            </p>
+            <p>See also: <a href="{% url 'gallery' %}">How to Install Lightroom Presets</a>.</p>
+          </div>
+          <h2>Download Lightroom Mobile Presets (DNG)</h2>
+          <p class="text-align-center">LightLab can generate a dummy DNG file that you can use as a preset in Lightroom for mobile.</p>
+          <p class="text-align-center">Download DNG file, import it to Lightroom for mobile and copy settings to your photos.</p>
+          <p class="text-align-center">For more information, see: <a href="{% url 'gallery' %}">Lightroom Mobile Presets - Download DNG.</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-wrap" id="preset-finder">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <h2>Preset Finder</h2>
+          <p class="support-text">Sometimes you want to find out which preset was used on the given photo. Preset Finder is meant to help you with that.</p>
+          <img src="{% static 'img/preset-finder1.png' %}" alt="">
+          <p>Whether you want to know which presets other photographers use or you'd simply like to know which one of your own presets you used in the past on the given photo, Preset Finder has you covered.</p>
+          
+          <ul>
+            <p>Upload your presets to LightLab and drop a JPG image. Present Finder will:</p>
+            <li>scan all your presets</li>
+            <li>show you which ones match the settings in JPG (ordered by confidence score).</li>
+          </ul>
+          <a href="{% url 'faq' %}" class="btn btn--lg btn--color btn--icon">
+            <span>Frequently Asked Questions</span>
+            <i class="ui-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section-wrap bg-color">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="title-row">
+            <h2 class="section-title">Satisfied Customers</h2>
+            <p class="subtitle">Those who already tried it.</p>
+            
+          </div>
+
+          <div id="owl-testimonials" class="owl-carousel owl-theme owl-carousel--arrows-outside">
+
+            <div class="testimonial clearfix">
+              <img src="{% static 'img/testimonials/1.png' %}" alt="" class="testimonial__img">
+              <div class="testimonial__info">
+                <span class="testimonial__author">Joeby Ragpa</span>
+                <span class="testimonial__company">DeoThemes</span>
+              </div>
+              <div class="testimonial__body">
+                <p class="testimonial__text">“I have witnessed and admired the work for years. I highly recommend this work for anyone seeking to increase.”</p>
+                <div class="testimonial__rating">
+                  <i class="ui-star"></i>
+                  <i class="ui-star"></i>
+                  <i class="ui-star"></i>
+                  <i class="ui-star"></i>
+                  <i class="ui-star"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial clearfix">
+              <img src="{% static 'img/testimonials/2.png' %}" alt="" class="testimonial__img">
+              <div class="testimonial__info">
+                <span class="testimonial__author">Alexander Samokhin</span>
+                <span class="testimonial__company">DeoThemes</span>
+              </div>
+              <div class="testimonial__body">
+                <p class="testimonial__text">“Every detail has been taken care these team are realy amazing and talented! I will work only to help your sales goals.”</p>
+                <div class="testimonial__rating">
+                  <i class="ui-star"></i>
+                  <i class="ui-star"></i>
+                  <i class="ui-star"></i>
+                  <i class="ui-star"></i>
+                  <i class="ui-star"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial clearfix">
+              <img src="{% static 'img/testimonials/1.png' %}" alt="" class="testimonial__img">
+              <div class="testimonial__info">
+                <span class="testimonial__author">Joeby Ragpa</span>
+                <span class="testimonial__company">DeoThemes</span>
+              </div>
+              <div class="testimonial__body">
+                <p class="testimonial__text">“I have witnessed and admired the work for years. I highly recommend this work for anyone seeking to increase.”</p>
+                <div class="testimonial__rating">
+                  <i class="ui-star"></i>
+                  <i class="ui-star"></i>
+                  <i class="ui-star"></i>
+                  <i class="ui-star"></i>
+                  <i class="ui-star"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial clearfix">
+              <img src="{% static 'img/testimonials/2.png' %}" alt="" class="testimonial__img">
+              <div class="testimonial__info">
+                <span class="testimonial__author">Alexander Samokhin</span>
+                <span class="testimonial__company">DeoThemes</span>
+              </div>
+              <div class="testimonial__body">
+                <p class="testimonial__text">“Every detail has been taken care these team are realy amazing and talented! I will work only to help your sales goals.”</p>
+                <div class="testimonial__rating">
+                  <i class="ui-star"></i>
+                  <i class="ui-star"></i>
+                  <i class="ui-star"></i>
+                  <i class="ui-star"></i>
+                  <i class="ui-star"></i>
+                </div>
+              </div>
+            </div>
+
+          </div> <!-- end owl-carousel -->
+        </div>
+      </div>
+    </div>
+  </section> <!-- end testimonials -->
+
+  
+  <!-- Partners -->
+  <section class="section-wrap section-wrap--pb-large bg-gradient" style="background-image: url({% static 'img/partners/map.png' %});">
+    <div class="container">
+      <div class="title-row title-row--boxed text-center">
+        <h2 class="section-title">Join thousands of independent designers using LightLab</h2>
+        <p class="subtitle">Grab your favorite JPGs (or use our examples) and start exploring.</p>
+      </div>
+      <div class="row justify-content-center text-center">
+        <div class="col-lg-10">
+          <div class="row pb-48">
+            <div class="col-md col-sm-6">
+              <img src="{% static 'img/partners/1.png' %}" alt="">
+            </div>
+            <div class="col-md col-sm-6">
+              <img src="{% static 'img/partners/2.png' %}" alt="">
+            </div>
+            <div class="col-md col-sm-6">
+              <img src="{% static 'img/partners/3.png' %}" alt="">
+            </div>
+            <div class="col-md col-sm-6">
+              <img src="{% static 'img/partners/4.png' %}" alt="">
+            </div>
+            <div class="col-md col-sm-6">
+              <img src="{% static 'img/partners/5.png' %}" alt="">
+            </div>
+          </div>
+        </div>
+      </div>          
+    </div>
+  </section> <!-- end partners -->
+
+  <!-- CTA -->
+  <div class="container offset-top-152 pt-sm-48">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="call-to-action box-shadow-large text-center">
+          <div class="call-to-action__container">
+            <h3 class="call-to-action__title">
+              Give us a try!
+            </h3>
+            <a href="{% url 'gallery' %}" class="btn btn--lg btn--color">
+              <span>Try LightLab now</span>
+            </a>
+          </div>                
+        </div> 
+      </div>
+    </div>
+  </div> <!-- end cta -->      
+{% endblock %}

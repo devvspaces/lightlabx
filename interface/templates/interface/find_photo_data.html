@@ -1,0 +1,105 @@
+{% extends "interface/base.html" %}
+{% load static %}
+
+
+{% block contents %}
+    <section class="section-wrap" id="resource_book">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="heading">
+                        <h2>How to Find Photos with Metadata</h2>
+                        <p>PixelPeeper.io can reverse-engineer edits from photos, but it needs JPG files with metadata — and these aren't always easy to find.</p>
+                        <p>Here are some tips & tricks you can use to increase your chances. Although they are not guaranteed to work, they are always worth trying.</p>
+                    </div>
+                    <div class="contents">
+                        <p><strong>Contents</strong></p>
+                        <ol>
+                            <li>
+                                <a href="#">What You Need to Know</a>
+                            </li>
+                            <li>
+                                <a href="#">How to Get Original Files</a>
+                            </li>
+                            <li>
+                                <a href="#">How to Get Original Files for WordPress Websites</a>
+                            </li>
+                            <li>
+                                <a href="#">How to Get Original Files for Squarespace Websites</a>
+                            </li>
+                            <li>
+                                <a href="#">How to Get Original Files from Unsplash</a>
+                            </li>
+                            <li>
+                                <a href="#">How to Get Original Files from Any Website</a>
+                            </li>
+                            <li>
+                                <a href="#">How to Open Files for Websites that Block Right-click</a>
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="result">
+                        <h5>What You Need to Know</h5>
+                        <p>PixelPeeper can only read metadata for files exported from Adobe Lightroom. It means that if the photographer used other software, you won't be able to recover edits from their photos.</p>
+                        <p>Another important condition: Lightroom has an option to strip metadata from images on export — if the author used it, there's no way to recover edits from the file.</p>
+                        <p>See also: <a href="#">Why You Shouldn't Remove Metadata from Your Photos</a></p>
+                    </div>
+                    <div class="result">
+                        <h5>How to Get Original Files</h5>
+                        <p>Your best chance of finding photos with metadata is getting a hold of the original file.</p>
+                        <p>Original JPG files uploaded by the author can be quite large, so they are usually resized and optimized by the website software – and the optimized versions won't include metadata (at least most of the time).</p>
+                        <p>However, you can try to get the original file, but it takes a bit of tampering with image URLs.</p>
+                    </div>
+                    <div class="result">
+                        <h5>How to Get Original Files for WordPress Websites</h5>
+                        <p>WordPress is the most popular blog software, powering 39% of the web (as they claim). Many photography blogs are based on WordPress and thankfully, getting original files for WP-based websites is quite easy.</p>
+                        <p>Note: blogs using WordPress will usually have <strong>/wp-content</strong> in the image URL.</p>
+                        <p>Sometimes WordPress serves original files by default — and sometimes it will serve resized versions. It all depends on configuration used by the author.</p>
+                        <p>If you visit a WordPress-based website and find an image you want to inspect, right-click on it to open it in a new tab.</p>
+                        <p>If the URL contains dimensions before the .jpg part, you're getting a resized version without metadata:</p>
+                        <p class="codes">https://example-blog.com/wp-content/uploads/2020/07/IMG_1234-1080x1620.jpg</p>
+                        <p>In the URL above, you'll have to remove -1080x1620 to get the original image:</p>
+                        <p class="codes">https://example-blog.com/wp-content/uploads/2020/07/IMG_1234.jpg</p>
+                    </div>
+                    <div class="result">
+                        <h5>How to Get Original Files for Squarespace Websites</h5>
+                        <p>Squarespace is another popular option. They don't strip metadata by default, but they can sometimes block right-click so it's harder to download images. See the section at the bottom for tips on how to work around it.</p>
+                        <p>Note: blogs using Squarespace will usually have images.squarespace-cdn.com in the image URL.</p>
+                        <p>If the image doesn't have metadata, you can try removing the ?format=XXXX part from the end of the URL. This doesn't guarantee anything, but it's worth trying.</p>
+                    </div>
+                    <div class="result">
+                        <h5>How to Get Original Files from Unsplash</h5>
+                        <p>Unsplash strips metadata from images and files you download by clicking on the "Download free" button will not include edits.</p>
+                        <p>To get the original image, right-click on the photo, open it in a new tab and remove everything after ? from the URL:</p>
+                        <p class="codes">https://images.unsplash.com/photo-12345-12345?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1534&q=80</p>
+                        <p>So that you get:</p>
+                        <p class="codes">https://images.unsplash.com/photo-12345-12345</p>
+                        <p>This is the original file that might contain Exif and XMP metadata.</p>
+                        <p>(These are example URLs used to illustrate the method, but they don't lead to an actual photo)</p>
+                    </div>
+                    <div class="result">
+                        <h5>How to Get Original Files from Any Website</h5>
+                        <p>The method illustrated above can work on any website that uses resizing in a way that can lead you to the original file. You'll need a bit of trial and error to make it work and there's always a chance it won't work.</p>
+                        <p>But the general method is: open image in a new tab, look at the URL in the address bar and see if you can remove some parts modifying it (as in the examples above).</p>
+                    </div>
+                    <div class="result">
+                        <h5>How to Open Files on Websites that Block Right-click</h5>
+                        <p>Some websites will block right-click or hide images to prevent you from downloading them.</p>
+                        <p>You can work around it, but it takes a bit of technical knowledge.
+
+                            The images are always there, but they can be buried in the source code.</p>
+                        <p>You'll need <a href="https://developers.google.com/web/tools/chrome-devtools">Chrome DevTools</a>. If you're using Chrome, this tool is built-in and you don't need to install anything.</p>
+                        <p>Open the website in Chrome, hover your mouse cursor over the image you'd like to download and hit <code>CMD+Option+C</code> (macOS) or <code>Control+Shift+C</code> (Windows, Linux, Chrome OS) to open DevTools.</p>
+                        <p>Click on the image to highlight the HTML element in DevTools.
+
+                            It will show you the HTML tag (for example <code><img></code>) that includes image URL. Sometimes the image URL will be in the style= attribute, for example:</p>
+                        <p class="codes">&lt;div ... style="background-image: url(https://example.com/this-is-your-image-url.jpg)"</p>
+                        <p>Copy the URL and open it in a new tab.</p>
+                        <p><strong>IMPORTANT NOTE:</strong> many websites will use overlay elements to hide the original image, so whey you use the method described above, DevTools will show you the overlay element, not the actual image.</p>
+                        <p>The image is still there, but you'll have to click through the source code using DevTools to find the right element.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

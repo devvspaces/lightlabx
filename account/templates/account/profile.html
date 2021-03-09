@@ -1,0 +1,63 @@
+{% extends "interface/base.html" %}
+{% load static %}
+
+
+{% block contents %}
+    <!-- Page Title -->
+    <section class="page-title text-center">
+    <div class="container">
+        <div class="page-title__holder">
+        <h1 class="page-title__title">My Account</h1>
+        <p class="page-title__subtitle">This are your LightLab account details.</p>
+        </div>
+    </div>
+    </section> <!-- end page title -->
+
+    <!-- Contact -->
+    <section class="section-wrap">
+    <div class="container">
+        <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="contact box-shadow-large offset-top-171">
+
+            <!-- Contact Form -->
+            <form id="contact-form" class="contact-form mt-30 mb-30" method="post" action="#">
+                {% csrf_token %}
+                <div class="row row-30 justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="form-group">
+                            <label for="email">Email <abbr title="required" class="required">*</abbr></label>
+                            <input name="email" id="email" type="email" value="{% if form.email.value %}{{form.email.value}}{% endif %}">
+                            {% if form.email.errors %}
+                                {% for i in form.email.errors %}
+                                    <small class="text-danger form-error">{{i}}</small>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-lg-10">
+                        <div class="form-group">
+                            <label for="username">Username <abbr title="required" class="required">*</abbr></label>
+                            <input name="username" id="username" type="text" value="{% if form.username.value %}{{form.username.value}}{% endif %}">
+                            {% if form.username.errors %}
+                                {% for i in form.username.errors %}
+                                    <small class="text-danger form-error">{{i}}</small>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="submit_btns">
+                    <input type="submit" class="btn btn--lg btn--color btn--small btn--button" value="Update" id="submit-message">
+                    <a href="{% url 'change_password' %}" class="btn btn--lg btn--color btn--small btn--button">Change Password</a>
+                </div>
+                
+                <div id="msg" class="message"></div>
+            </form>
+            </div>
+        </div>            
+        </div>
+    </div>
+    </section> <!-- end contact -->
+{% endblock %}

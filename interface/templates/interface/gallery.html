@@ -1,0 +1,44 @@
+{% extends "interface/base.html" %}
+{% load static %}
+
+
+{% block contents %}      
+    <section class="section-wrap" id="gallery">
+        <div class="container">
+            <h3 class="head">Our Example Photos</h3>
+            <p class="support-text">Below you'll find a set of example photos with complete metadata attached. Click on any of them to view settings.</p>
+            <div class="images_list">
+                <div class="image_box">
+                    <img src="{% static 'img/20160511-DSC02002_thumb.jpg' %}" alt="">
+                </div>
+                <div class="image_box">
+                    <img src="{% static 'img/20160509-DSC01861_thumb.jpg' %}" alt="">
+                </div>
+                <div class="image_box">
+                    <img src="{% static 'img/20180826-DSC07924_thumb.jpg' %}" alt="">
+                </div>
+                <div class="image_box">
+                    <img src="{% static 'img/20201105-DSCF5206_thumb.jpg' %}" alt="">
+                </div>
+                <div class="image_box">
+                    <img src="{% static 'img/20160914-DSC06849_thumb.jpg' %}" alt="">
+                </div>
+                <div class="image_box">
+                    <img src="{% static 'img/20160511-DSC02002_thumb.jpg' %}" alt="">
+                </div>
+                <div class="image_box">
+                    <img src="{% static 'img/20160509-DSC01861_thumb.jpg' %}" alt="">
+                </div>
+                <div class="image_box">
+                    <img src="{% static 'img/20180826-DSC07924_thumb.jpg' %}" alt="">
+                </div>
+                <div class="image_box">
+                    <img src="{% static 'img/20201105-DSCF5206_thumb.jpg' %}" alt="">
+                </div>
+                <div class="image_box">
+                    <img src="{% static 'img/20160914-DSC06849_thumb.jpg' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

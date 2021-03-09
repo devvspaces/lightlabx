@@ -1,0 +1,35 @@
+{% extends "interface/base.html" %}
+{% load static %}
+
+
+{% block contents %}
+    <section class="section-wrap" id="resources">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h2>Resources</h2>
+                    <div class="resource">
+                        <h5><a href="#">How to Install Lightroom Presets</a></h5>
+                        <p>PixelPeeper allows you to download settings in an XMP format that you can add to Lightroom and use it as a regular preset.</p>
+                    </div>
+                    <div class="resource">
+                        <h5><a href="#">Lightroom Mobile Presets - Download DNG</a></h5>
+                        <p>PixelPeeper lets you download settings in a DNG file, compatible with Lightroom for mobile.</p>
+                    </div>
+                    <div class="resource">
+                        <h5><a href="{% url 'find_photo_with_metadata' %}">How to Find Photos with Metadata</a></h5>
+                        <p>Tips and tricks on how to increase your chances of finding photos that work with PixelPeeper.</p>
+                    </div>
+                    <div class="resource">
+                        <h5><a href="{% url 'insta_data' %}">How to Get Metadata for Instagram Photos</a></h5>
+                        <p>Instagram strips metadata from files, but there's a possible workaround.</p>
+                    </div>
+                    <div class="resource">
+                        <h5><a href="#">Why You Shouldn't Remove Metadata from Your Photos</a></h5>
+                        <p>Removing metadata might seem like a good idea, but you may need it in the future.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

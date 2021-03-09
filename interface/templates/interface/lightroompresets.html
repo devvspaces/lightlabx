@@ -1,0 +1,96 @@
+{% extends "interface/base.html" %}
+{% load static %}
+
+
+{% block contents %}
+    <section class="section-wrap freeguys">
+        <div class="container">
+            <h3 class="head">Lightroom Presets - Learn to Create any Look You Want</h3>
+            <p class="support-text">Lightroom Presets are not magic. You can learn to edit photos and create your own look — because the best presets will always be those that work for your own style of shooting.</p>
+            <div class="flexed">
+                <div class="images_only">
+                    <img src="{% static 'img/preset-finder1.png' %}" alt="">
+                </div>
+                <div class="text_content">
+                    <p>Presets can be a great starting point and a huge time-saver, but keep in mind, that you'll always need to make your own adjustments.</p>
+                    <p>Usually, presets are made to be generic, but they always reflect the style of shooting of the person who created them. Some people like to underexpose their photos and then bump up the exposure in Lightroom, others will do the opposite. Presets will always have a hard-coded preference towards skin tones, color palette, contrast etc.</p>
+                    <p>All of that may not work for your own style of shooting, for the weather conditions you're shooting in (like, trying to recreate the look made for California Sun in Norway or New York City). No matter how great the preset looks in demo pictures, you should always strive for your own look.</p>
+                    <p>That's why it's better to learn the underlying principles behind the presets: why do I like this look? How can I recreate it on my own?</p>
+                    <p class="super">PixelPeeper.io helps you learn photo editing by allowing you to reverse-engineer edits from JPG files. Simply grab a JPG file and see what edits were made to it.</p>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    <section class="section-wrap freeguys special">
+        <div class="container">
+            <h3 class="head">Turn JPG Files into Lightroom Presets</h3>
+            <p class="support-text">With PixelPeeper.io, you can turn any JPG file with metadata into a XMP/DNG preset that you can apply to your own photos.</p>
+            <div class="flexed">
+                <div class="images_only">
+                    <img class="small_img" src="{% static 'img/download-preset.png' %}" alt="">
+                </div>
+                <div class="text_content">
+                    <p>When you find a photo with metadata, you can download it as a preset, import it to Lightroom and apply to your own photos.</p>
+                    <p>See also: <a href="#">How to Install Lightroom Presets</a>.</p>
+                    <h5>Lightroom Mobile Presets (DNG)</h5>
+                    <p>With PixelPeeper, you can create presets for the free Lightroom mobile version (without Creative Cloud subscription). PixelPeeper can generate a dummy DNG file that you can use as a preset in Lightroom for mobile.</p>
+                    <p>Download DNG file, import it to Lightroom for mobile and copy settings to your photos.</p>
+                    <p>Find out more here: <a href="{% url 'gallery' %}">Lightroom Mobile Presets.</a>.</p>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    <section class="section-wrap freeguys">
+        <div class="container">
+            <h3 class="head">Learn Photo Editing with our Examples</h3>
+            <p class="support-text">PixelPeeper.io will show you Lightroom edits for any JPG file that includes metadata. But if you want to save time, you can try our gallery of example photos.</p>
+            <div class="flexed">
+                <div class="images_only">
+                    <img src="{% static 'img/preset-finder1.png' %}" alt="">
+                </div>
+                <div class="text_content">
+                    <p>We have a selection of photos with complete metadata and "before" versions. You can see all the edits made to these files, see the starting point — plus you have the option to download settings as a Lightroom preset.</p>
+                    <p>Go ahead and browse our <a href="{% url 'gallery' %}">Example Photos</a></p>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    <section class="section-wrap freeguys">
+        <div class="container">
+            <h3 class="head">Preset Finder</h3>
+            <p class="support-text">If you need to find out which preset was used on the given photo, our Preset Finder feature will help you.</p>
+            <div class="flexed">
+                <div class="images_only">
+                    <img src="{% static 'img/preset-finder1.png' %}" alt="">
+                </div>
+                <div class="text_content">
+                    <p>Whether you want to know which presets other photographers use or you'd simply like to know which one of your own presets you used in the past on the given photo, Preset Finder has you covered.</p>
+                    <p>Upload your presets to PixelPeeper and drop a JPG image. Present Finder will:</p>
+                    <ul>
+                        <li>scan all your presets</li>
+                        <li>show you which ones match the settings in JPG (ordered by confidence score).</li>
+                    </ul>
+                    <p>See also: <a href="{% url 'faq' %}">Frequently Asked Questions</a>.</p>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    <section class="section-wrap freeguys one">
+        <div class="container">
+            <h3 class="head">Create your own Instagram Presets</h3>
+            <p class="support-text">Whether you want your own presets for your photography business, or for your instagram feed, PixelPeeper can be a great way to help you learn to create any look you want.</p>
+            <div class="flexed">
+                <div class="text_content">
+                    <a href="{% url 'gallery' %}" class="btn btn--lg btn--color btn--icon">
+                        <span>Try LightLab Now</span>
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+{% endblock %}

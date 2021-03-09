@@ -1,0 +1,24 @@
+{% extends "interface/base.html" %}
+{% load static %}
+
+
+{% block contents %}
+    <section class="section-wrap" id="resource_book">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="heading">
+                        <h2>How to Get Metadata for Instagram Photos</h2>
+                    </div>
+                    <div class="result">
+                        <p>PixelPeeper.io can reverse-engineer edits from photos, but it needs JPGs with metadata. Instagram strips metadata from files, but there are work-arounds you can try.</p>
+                        <p>Photos downloaded directly from Instagram won't work with PixelPeeper, because they don't contain metadata. Instagram strips it to save up on bandwidth (metadata makes files bigger).</p>
+                        <p>There are also privacy concerns: photos taken on phones can contain the exact location they were taken at. If they didn't remove it, you can only imagine what stalkers could use it for.</p>
+                        <p>So, there's no way to get metadata directly from Instagram, but if the author has a website, there's a chance they upload the same photos there as well — and you have a much bigger chance finding original photos with metadata on their website.</p>
+                        <p>For more details, see: <a href="{% url 'find_photo_with_metadata' %}">How to Find Photos with Metadata</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

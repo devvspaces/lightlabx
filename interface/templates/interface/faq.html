@@ -1,0 +1,72 @@
+{% extends "interface/base.html" %}
+{% load static %}
+
+
+{% block contents %}
+    <section class="section-wrap" id="faq">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h2>Frequently Asked Questions</h2>
+                    <div class="question_box">
+                        <h5>I'm trying different JPG files, but it doesn't work. Why?</h5>
+                        <p>Pixel Peeper reads <a href="https://en.wikipedia.org/wiki/Exif">Exif</a> and <a href="https://en.wikipedia.org/wiki/Extensible_Metadata_Platform">XMP</a> to obtain camera settings and Lightroom adjustments.</p>
+                        <p>If this kind of metadata is not present in the file, you won't see any results. Many photographers choose not to include it. Some websites (e.g. Facebook and Instagram) remove all metadata from their photos.</p>
+                        <p>See also: <a href="#">How to Find Photos with Metadata</a></p>
+                    </div>
+                    <div class="question_box">
+                        <h5>Where do I find an example image with metadata, so I can see how it works?</h5>
+                        <p>Pixel Peeper reads <a href="https://en.wikipedia.org/wiki/Exif">Exif</a> and <a href="https://en.wikipedia.org/wiki/Extensible_Metadata_Platform">XMP</a> to obtain camera settings and Lightroom adjustments.</p>
+                        <p>If this kind of metadata is not present in the file, you won't see any results. Many photographers choose not to include it. Some websites (e.g. Facebook and Instagram) remove all metadata from their photos.</p>
+                        <p>Try these <a href="{% url 'gallery' %}">example photos</a></p>
+                    </div>
+                    <div class="question_box">
+                        <h5>Will it work for Instagram photos?</h5>
+                        <p>No. Instagram removes all metadata from photos.</p>
+                        <p>But you can try this: <a href="#">How to Get Metadata for Instagram Photos</a></p>
+                    </div>
+                    <div class="question_box">
+                        <h5>Does it work with Photoshop? Or any other editing software?</h5>
+                        <p>It works for files exported with <strong>Lightroom only</strong>.</p>
+                    </div>
+                    <div class="question_box">
+                        <h5>Do PixelPeeper presets include Camera Profiles?</h5>
+                        <p>Presets downloaded from PixelPeeper include only the name of the camera profile. The actual camera profile is not embedded in JPG.</p>
+                        <p>Camera profile is a binary file that has to be installed in Lightroom independently — and PixelPeeper can't do that.</p>
+                    </div>
+                    <div class="question_box">
+                        <h5>I don't want my photos to include these settings. What should I do?</h5>
+                        <p>In Lightroom, you can remove the metadata on export to JPG ("Remove All Metadata" option), or use a plugin called <a href="http://regex.info/blog/lightroom-goodies/metadata-wrangler">Metadata Wrangler</a> to selectively strip certain parts of this information.</p>
+                        <p>See also: <a href="#">Why You Shouldn't Remove Metadata from Your Photos</a></p>
+                    </div>
+                    <div class="question_box">
+                        <h5>Can I share the settings of a photo I just checked?</h5>
+                        <p>Yes, every image you check here gets a unique URL. Simply copy the URL and share it. You won't see the image itself, though. Images are not uploaded to the site.</p>
+                    </div>
+                    <div class="question_box">
+                        <h5>I have an account, but I can't log in</h5>
+                        <p>The most common causes are:</p>
+                        <ol>
+                            <li><strong>You're not using the email you signed up with.</strong> If you get the "Unknown email" error, the email you're entering is not the one you used to created the account.</li>
+                            <li><strong>Emails from PixelPeeper go to Spam.</strong> Check your spam folder and add robot@pixelpeeper.io to whitelisted contacts. The specifics of how to do that will depend on your email provider.</li>
+                            <li><strong>Your browser is outdated.</strong> Make sure your're using the latest version of your browser. Supported browsers are: Chrome, Firefox and Safari. If you're using Internet Explorer, the site won't work for you.</li>
+                        </ol>
+                    </div>
+                    <div class="question_box">
+                        <h5>I don't own any Lightroom presets, can I use Preset Finder?</h5>
+                        <p>Sorry, no. The Preset Finder feature is intended for those who already purchased (or created their own) preset packs. You have to upload presets from your computer to make them available for Preset Finder.</p>
+                        <p>It's implemented like this, because I don't want to discourage people from buying certain presets, simply because they can copy the settings from this site.</p>
+                    </div>
+                    <div class="question_box">
+                        <h5>How do I get a refund?</h5>
+                        <p>Premium Account fees are fully refundable for 3 days following signup. No need to give any reasons or explanations. If you're not happy, just <a href="mailto:admin@lightlab.com"></a> with "Refund" in the title. I'll send your money back as soon as possible (although it takes 3-5 days for refunds to be processed by the payment provider).</p>
+                    </div>
+                    <div class="question_box">
+                        <h5>I've noticed a bug. How can I report it?</h5>
+                        <p><a href="mailto:admin@lightlab.com">Email me</a> the details, including a screenshot and information about the OS and the browser you're using.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

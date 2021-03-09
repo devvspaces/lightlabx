@@ -1,0 +1,92 @@
+{% extends "interface/base.html" %}
+{% load static %}
+
+
+{% block contents %}      
+    <section class="section-wrap freeguys">
+        <div class="container">
+            <h2 class="head">Free Lightroom Presets</h2>
+            <p class="support-text">Download our free presets and try them on your own photos.</p>
+            <div class="flexed">
+                <div class="images_list">
+                    <div class="image_box">
+                        <img src="{% static 'img/20160511-DSC02002_thumb.jpg' %}" alt="">
+                    </div>
+                    <div class="image_box">
+                        <img src="{% static 'img/20160509-DSC01861_thumb.jpg' %}" alt="">
+                    </div>
+                    <div class="image_box">
+                        <img src="{% static 'img/20180826-DSC07924_thumb.jpg' %}" alt="">
+                    </div>
+                    <div class="image_box">
+                        <img src="{% static 'img/20201105-DSCF5206_thumb.jpg' %}" alt="">
+                    </div>
+                </div>
+                <div class="text_content">
+                    <p>LightLab lets you turn JPG files into Lightroom Presets. If you want to know how that's even possible, our free presets and <a href="{% url 'gallery' %}">Example Photos</a> can be a great starting point.</p>
+                    <p>Click on any of the images above to view all edits made to them. You can also download presets, import them to Lightroom and apply to your own photos.</p>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    <section class="section-wrap freeguys">
+        <div class="container">
+            <h3 class="head">Turn a JPG image into a Lightroom Preset</h3>
+            <p class="support-text">LightLab lets you reverse-engineer edits from JPG files. Simply grab an image and see what edits were made to it.</p>
+            <div class="flexed">
+                <div class="images_only">
+                    <img src="{% static 'img/preset-finder1.png' %}" alt="">
+                </div>
+                <div class="text_content">
+                    <p>Please refer to <a href="{% url 'faq' %}">Frequently Asked Questions</a> for more information on how LightLab works.</p>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    <section class="section-wrap freeguys">
+        <div class="container">
+            <h3 class="head">Get Started with Example Photos</h3>
+            <p class="support-text">LightLab can show you Lightroom edits for any JPG file that includes metadata. But if you want to save some time, check out our examples.</p>
+            <div class="flexed">
+                <div class="images_only">
+                    <img src="{% static 'img/preset-finder1.png' %}" alt="">
+                </div>
+                <div class="text_content">
+                    <p>Our selection of examples include complete metadata and unedited "before" versions. You'll be able see all the edits made to these files and see the starting point. You also have the option to download settings as a preset.</p>
+                    <p>Check out the <a href="{% url 'gallery' %}">Example Photos</a>.</p>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    <section class="section-wrap freeguys one">
+        <div class="container">
+            <h3 class="head">Download Free Presets</h3>
+            <p class="support-text">Try LightLab by exploring our free presets. No strings attached.</p>
+            <div class="flexed">
+                <div class="images_list">
+                    <div class="image_box">
+                        <img src="{% static 'img/20160511-DSC02002_thumb.jpg' %}" alt="">
+                    </div>
+                    <div class="image_box">
+                        <img src="{% static 'img/20160509-DSC01861_thumb.jpg' %}" alt="">
+                    </div>
+                    <div class="image_box">
+                        <img src="{% static 'img/20180826-DSC07924_thumb.jpg' %}" alt="">
+                    </div>
+                    <div class="image_box">
+                        <img src="{% static 'img/20201105-DSCF5206_thumb.jpg' %}" alt="">
+                    </div>
+                </div>
+                <div class="text_content">
+                    <a href="{% url 'gallery' %}" class="btn btn--lg btn--color btn--icon">
+                        <span>Try LightLab for Free</span>
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+{% endblock %}

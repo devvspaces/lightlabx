@@ -198,4 +198,139 @@
     return false;
   });
 
+
+  // Codes for ajax setup for get and post requests to backend
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        let cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            let cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+  }
+
+
+  let csrftoken = ''
+  try{
+    csrftoken = getCookie('csrftoken');
+  } catch(e){}
+
+
+  function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+  }
+
+
+
+  try{
+  $.ajaxSetup({
+      beforeSend: function(xhr, settings) {
+          if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+              xhr.setRequestHeader("X-CSRFToken", csrftoken);
+          }
+      }
+  });
+  } catch(e){
+  }
+
+
+  // THe image form
+  let the_img_form = $('#the_img_form')
+  let submit_form = $('#submit_form')
+  let img_text = $('.img_text')
+  let processing = $('#processing')
+
+  // The image tag to show the selected image
+  var the_image_view = document.getElementById("the_image_view");
+
+  // The image input
+  // let image_file = $('#image_file')
+  let image_file = document.querySelector('#image_file')
+
+  // When any element with the class btn_img is clicked the form is opened up
+  let btn_img = $('.btn_img')
+  btn_img.click(function(e){
+    image_file.click()
+  })
+
+
+  // When an image is selected we want to view it and submit the form
+  function showImage(src,target) {
+    var fr=new FileReader();
+    // when image is loaded, set the src of the image where you want to display it
+    fr.onload = function(e) { target.src = this.result; };
+
+    jQuery.noConflict();	
+	  let formdata = new FormData();
+    src.addEventListener("change",function() {
+      // fill fr with image data    
+      fr.readAsDataURL(src.files[0]);
+
+      // Make the the_image_view displayed
+      the_image_view.classList.remove('d-none')
+
+      // Display none every other image
+      img_text.css('display','none')
+
+      // Send the image to the server
+      var file = this.files[0];
+      if (formdata) {
+        formdata.append("pixel_image", file);
+
+        let thisURL = window.location.href
+        $.ajax({
+          url: thisURL,
+          type: "POST",
+          data: formdata,
+          processData: false,
+          contentType: false,
+          success: handleFormSuccess,
+          error: handleFormError
+        });
+
+        // Show the processing modal
+        processing.addClass('active')
+      }
+    });
+  }
+
+  showImage(image_file,the_image_view);
+
+
+  function handleFormSuccess(data, textStatus, jqXHR){
+    // Kill the modal
+    processing.removeClass('active')
+
+    // Parse the results into the required fields
+    let dataKeys = Object.keys(data)
+
+    dataKeys.forEach(i=>{
+      let selector = "span.data[data-key='"+i+"']"
+      console.log(selector)
+      let el = document.querySelector(selector)
+      if (el){
+        el.innerText = data[i]
+      }
+    })
+
+    console.log(jqXHR)
+  }
+  
+  function handleFormError(jqXHR, textStatus){
+    // Kill the modal
+    processing.removeClass('active')
+
+    console.log(jqXHR)
+  }
+
+
+
 })(jQuery);

@@ -97,7 +97,8 @@ class Login(FormView):
             user = authenticate(request, username=email, password=password)
             if user:
                 login(request, user)
-                messages.success(request, f'Welcome, {user.username}')
+                name = user.email.split('@'[-1].capitalize())
+                messages.success(request, f'Welcome, {name}')
                 return redirect('home')
             else:
                 messages.warning(request, 'Your email is not yet verified.')

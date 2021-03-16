@@ -6,16 +6,25 @@
     <section class="section-wrap">
         <div class="container full_screen">
             <div id="main_ui">
+                <div id="processing">
+                    <p>Processing Image</p>
+                </div>
                 <div class="main_box images">
                     <h5 class="heading">Photo</h5>
                     <div class="inner_box">
-                        <div class="img_box">
-                            <p>Drop a JPG file here</p>
-                            <small>or</small>
-                            <form action="" class="d-none">
-                                <input type="file" id="image_file">
+                        <div class="img_box btn_img" id='the_img_box'>
+                            <p class="img_text">Drop a JPG file here</p>
+                            <small class="img_text">or</small>
+                            <form action="" class="d-none" id='the_img_form' method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <input type="file" id="image_file" name="pixel_image">
+                                <button type="submit" id="submit_form">submit</button>
                             </form>
-                            <a href="#" class="btn btn--lg btn--alt-color btn--small btn--button">Browse files</a>
+                            <a href="#" class="btn btn--lg btn--alt-color btn--small btn--button img_text">Browse files</a>
+
+                            <!-- THe image details -->
+                            <img src="" alt="" id="the_image_view" class="d-none">
+                            <p class="the_image_name d-none"></p>
                         </div>
                         <div class="example_gallery">
                             <h6 class="head">Try <a href="{% url 'gallery' %}">example images</a></h6>
@@ -41,57 +50,57 @@
                     <div class="inner_box">
                         <div class="data_value">
                             <p>Camera model</p>
-                            <p class="value"><span class="data">—</span></p>
+                            <p class="value"><span class="data" data-key="Model">—</span></p>
                         </div>
                         <div class="data_value">
                             <p>Lens</p>
-                            <p class="value"><span class="data">—</span></p>
+                            <p class="value"><span class="data" data-key="Software">—</span></p>
                         </div>
                         <div class="data_value flexed">
                             <div class="sided_box">
                                 <p>Focal length</p>
-                                <p class="value"><span class="data">—</span></p>
+                                <p class="value"><span class="data" data-key="FocalLength">—</span></p>
                             </div>
                             <div class="sided_box">
                                 <p>Aperture</p>
-                                <p class="value">ƒ/<span class="data">—</span></p>
+                                <p class="value">ƒ/<span class="data" data-key="ApertureValue">—</span></p>
                             </div>
                             <div class="sided_box">
                                 <p>Shutter speed</p>
-                                <p class="value"><span class="data">—</span></p>
+                                <p class="value"><span class="data" data-key="ShutterSpeedValue">—</span></p>
                             </div>
                             <div class="sided_box">
                                 <p>ISO</p>
-                                <p class="value"><span class="data">—</span>s</p>
+                                <p class="value"><span class="data" data-key="ISOSpeedRatings">—</span>s</p>
                             </div>
                         </div>
                         <div class="data_value">
                             <p>Metering mode</p>
-                            <p class="value"><span class="data">—</span></p>
+                            <p class="value"><span class="data" data-key="MeteringMode">—</span></p>
                         </div>
                         <div class="data_value">
                             <p>Exposure program</p>
-                            <p class="value"><span class="data">—</span></p>
+                            <p class="value"><span class="data" data-key="ExposureProgram">—</span></p>
                         </div>
                         <div class="data_value">
                             <p>Exposure compensation</p>
-                            <p class="value"><span class="data">—</span></p>
+                            <p class="value"><span class="data" data-key="Software">—</span></p>
                         </div>
                         <div class="data_value">
                             <p>Flash</p>
-                            <p class="value"><span class="data">—</span></p>
+                            <p class="value"><span class="data" data-key="Flash">—</span></p>
                         </div>
                         <div class="data_value">
                             <p>Software</p>
-                            <p class="value"><span class="data">—</span></p>
+                            <p class="value"><span class="data" data-key="Software">—</span></p>
                         </div>
                         <div class="data_value">
                             <p>Taken at</p>
-                            <p class="value"><span class="data">—</span></p>
+                            <p class="value"><span class="data" data-key="DateTime">—</span></p>
                         </div>
                         <div class="data_value">
                             <p>Copyright</p>
-                            <p class="value"><span class="data">—</span></p>
+                            <p class="value"><span class="data" data-key="Make">—</span></p>
                         </div>
                     </div>
                 </div>

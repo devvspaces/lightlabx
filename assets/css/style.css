@@ -3124,6 +3124,22 @@ header .flex-parent {
 }
 
 
+/* Errors for image processing */
+#main_ui .errors-box{
+	width: 100%;
+	padding: 1rem;
+	margin-top: 3rem;
+}
+#main_ui .errors-box .error{
+	width: 100%;
+	padding: .6rem;
+	background-color: #f56c73;
+	color: #ffffff !important;
+	border-radius: .2rem;
+	margin: .5rem 0;
+}
+
+
 /* Scrollbar codes */
 /* width */
 ::-webkit-scrollbar {
@@ -3193,7 +3209,7 @@ header .flex-parent {
 
 
 .ranger .the_range{
-	width: 120px;
+	width: 100px;
 	height: 0px;
 }
 .ranger{
@@ -3216,6 +3232,7 @@ header .flex-parent {
 .filter_box p.centered{
 	text-align: center;
 	margin-top: 2rem;
+	font-weight: bold;
 }
 .filter_box .head{
 	text-align: right;
@@ -3232,6 +3249,22 @@ header .flex-parent {
 
 
 
+@media(max-width: 1050px){
+	#main_ui .main_box.exif {
+		max-width: none;
+		width: 65%;
+	}
+	#main_ui .main_box.images {
+		width: 100%;
+	}
+	#main_ui {
+		flex-wrap: wrap;
+	}
+	#main_ui .main_box .inner_box {
+		max-height: none;
+	}
+}
+
 @media(max-width: 1000px){
 	.freeguys .flexed .images_list {
 		width: 950px;
@@ -3244,7 +3277,32 @@ header .flex-parent {
 		width: 500px;
 		margin-top: 3rem;
 	}
+	#main_ui {
+		margin-top: 0;
+	}
 }
+
+@media (max-width: 870px){
+	#main_ui .main_box.exif {
+		width: 60%;
+	}
+}
+
+@media (max-width: 765px){
+	#main_ui .main_box.exif {
+		width: 55%;
+	}
+}
+
+@media (max-width: 670px){
+	#main_ui .main_box.exif {
+		width: 100%;
+	}
+	#main_ui .main_box.filters {
+		width: 100%;
+	}
+}
+
 
 
 /*-------------------------------------------------------*/

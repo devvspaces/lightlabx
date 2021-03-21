@@ -49,7 +49,7 @@ class LightCode(LoginRequiredMixin, FormView):
                 if exif:
                     return JsonResponse(exif, status=200)
                 else:
-                    return JsonResponse({'error': 'This image doesn\'t have any metadata'}, status=400)
+                    return JsonResponse({'error': ['This image doesn\'t have any metadata']}, status=400)
             else:
                 print(form.errors)
         

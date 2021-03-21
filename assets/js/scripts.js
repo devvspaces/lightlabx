@@ -304,31 +304,48 @@
 
   showImage(image_file,the_image_view);
 
+  let errors_box = document.querySelector('.errors-box')
 
   function handleFormSuccess(data, textStatus, jqXHR){
     // Kill the modal
     processing.removeClass('active')
+
+    // Clean errors
+    errors_box.innerHTML = ''
 
     // Parse the results into the required fields
     let dataKeys = Object.keys(data)
 
     dataKeys.forEach(i=>{
       let selector = "span.data[data-key='"+i+"']"
-      console.log(selector)
       let el = document.querySelector(selector)
       if (el){
         el.innerText = data[i]
       }
     })
-
-    console.log(jqXHR)
   }
   
   function handleFormError(jqXHR, textStatus){
     // Kill the modal
     processing.removeClass('active')
 
-    console.log(jqXHR)
+    // Clean errors
+    errors_box.innerHTML = ''
+
+    // Get the data from the jqxhr
+    let data = jqXHR.responseJSON
+
+    // Show the error under the image if it is available
+    let errors = data['error']
+    errors.forEach(i=>{
+      // <p class="error">This is an error</p>
+      let new_el = document.createElement('p')
+      new_el.classList.add('error')
+      new_el.innerText = i
+
+      // Adding the new element to the node
+      errors_box.appendChild(new_el)
+    })
   }
 
 

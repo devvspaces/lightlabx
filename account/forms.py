@@ -171,9 +171,11 @@ class UserRegisterForm(forms.ModelForm):
 							widget=forms.PasswordInput,
 							min_length=8,
 							help_text=password_validation.password_validators_help_text_html())
+	username = forms.CharField(max_length=225)
 	class Meta:
 		model=User
-		fields=("email","username","password",)
+		fields=("email","password")
+
 	# Cleaning password one to check if all validations are met
 	def clean_password(self):
 		ps1=self.cleaned_data.get("password")
@@ -183,9 +185,9 @@ class UserRegisterForm(forms.ModelForm):
 
 	# Clean username
 	def clean_username(self):
-		username = self.cleaned_data.get("username")
+		username = self.data.get("username")
 
-		username_exist = User.objects.filter(username=username).exclude(id=id).exists()
+		username_exist = User.objects.filter(username=username).exists()
 		if username_exist:
 			raise forms.ValidationError('This username has already been used')
 
@@ -193,6 +195,10 @@ class UserRegisterForm(forms.ModelForm):
 	def save(self, commit=True):
 		user=super(UserRegisterForm, self).save(commit=False)
 		user.set_password(self.cleaned_data.get("password"))
+
+		# Set the username of the user
+		username = self.data.get("username")
+		user.username = username
 		if commit:
 			user.save()
 		return user

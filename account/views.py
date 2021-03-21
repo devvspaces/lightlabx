@@ -97,7 +97,7 @@ class Login(FormView):
             user = authenticate(request, username=email, password=password)
             if user:
                 login(request, user)
-                name = user.email.split('@'[-1].capitalize())
+                name = user.username.capitalize()
                 messages.success(request, f'Welcome, {name}')
                 return redirect('home')
             else:

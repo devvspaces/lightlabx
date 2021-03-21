@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
 from .forms import UserRegisterForm
-from .models import User
+from .models import User, Membership, UserMembership, Subscription
 
 # Register your models here.
 class UserAdmin(BaseUserAdmin):
@@ -34,3 +34,6 @@ class UserAdmin(BaseUserAdmin):
 
 
 admin.site.register(User, UserAdmin)
+admin.site.register(Membership)
+admin.site.register(UserMembership)
+admin.site.register(Subscription)

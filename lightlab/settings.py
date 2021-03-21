@@ -135,9 +135,20 @@ EMAIL_HOST_USER = 'netrobeweb@gmail.com'
 EMAIL_HOST_PASSWORD = 'wpcgtxfwmiqnlbwv'
 # Custom user defined mail username
 # DEFAULT_FROM_EMAIL = 'info@xcrowme.com'
-DEFAULT_FROM_EMAIL = 'mailfinder@gmail.com'
+DEFAULT_FROM_EMAIL = 'LightLab@gmail.com'
 DEFAULT_COMPANY_EMAIL = 'netrobeweb@gmail.com'
 
 
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
+
+
+# Setting the stripe keys
+if DEBUG:
+    # test keys
+    STRIPE_PUBLISHABLE_KEY = ''
+    STRIPE_SECRET_KEY = ''
+else:
+    # live keys
+    STRIPE_PUBLISHABLE_KEY = ''
+    STRIPE_SECRET_KEY = ''

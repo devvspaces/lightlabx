@@ -95,3 +95,48 @@ class User(AbstractBaseUser):
 
     class Meta:
         verbose_name = 'LightLab User'
+
+
+class Membership(models.Model):
+    TYPES = (
+        ('Free', 'free',),
+        ('Yearly', 'yearly',),
+        ('Lifetime', 'lifetime',),
+    )
+    slug = models.SlugField(max_length=255)
+    member_type = models.CharField(choices=TYPES, max_length=1)
+    price = models.FloatField()
+    stripe_plan_id = models.CharField(max_length=255)
+
+    def __str__(self):
+        return f'Membership {self.member_type}'
+
+class UserMembership(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    stripe_customer_id = models.CharField(max_length=40)
+    membership = models.ForeignKey(Membership, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return f'UserMembership {self.user.username}'
+
+class Subscription(models.Model):
+    user_membership = models.ForeignKey(UserMembership, on_delete = models.CASCADE)
+    stripe_subscription_id = models.CharField(max_length=40)
+    active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return f'Subscription {self.user_membership.user.username}'
+
+
+# Creating signals
+@receiver(post_save, sender=User)
+def post_save_create_membership(sender, instance, created, **kwargs):
+    if created:
+        UserMembership.objects.get_or_create(user=instance)
+
+    user_membership, created = UserMembership.objects.get_or_create(user=instance)
+
+    if user_membership.stripe_customer_id == None or user_membership.stripe_customer_id == '':
+        new_customer_id = stripe.Customer.create(email=instance.email)
+        user_membership.stripe_customer_id = new_customer_id['id']
+        user_membership.save()

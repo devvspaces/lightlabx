@@ -23,14 +23,14 @@ class ResetPasswordValidateEmailForm(forms.Form):
 		return email
 
 class ProfileForm(forms.Form):
-	id = forms.IntegerField()
+	idx = forms.IntegerField()
 	username = forms.CharField(max_length=225)
 	email = forms.EmailField(max_length=255)
 	def clean(self):
 		cleaned_data = super(ProfileForm, self).clean()
 
 		# Get the user object
-		id = cleaned_data.get('id')
+		idx = cleaned_data.get('id')
 		user = get_object_or_404(User, id=id)
 
 		email = cleaned_data.get('email')
@@ -49,8 +49,8 @@ class ProfileForm(forms.Form):
 	def save(self, commit=True):
 		cleaned_data = self.clean()
 		# Get the user object
-		id = cleaned_data.get('id')
-		user = get_object_or_404(User, id=id)
+		idx = cleaned_data.get('id')
+		user = get_object_or_404(User, id=idx)
 
 		email = cleaned_data.get('email')
 		username = cleaned_data.get('username')

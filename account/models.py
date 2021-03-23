@@ -49,7 +49,7 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser):
-    username = models.CharField(max_length=225, null=True)
+    username = models.CharField(max_length=225, unique=True)
     email = models.EmailField(max_length=255, unique=True)
 
     # Admin fields

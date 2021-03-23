@@ -183,13 +183,13 @@ class UserRegisterForm(forms.ModelForm):
 		return ps1
 
 
-	# Clean username
-	def clean_username(self):
-		username = self.cleaned_data.get("username")
+	# # Clean username
+	# def clean_username(self):
+	# 	username = self.cleaned_data.get("username")
 
-		username_exist = User.objects.filter(username=username).exists()
-		if username_exist:
-			raise forms.ValidationError('This username has already been used')
+	# 	username_exist = User.objects.filter(username=username).exists()
+	# 	if username_exist:
+	# 		raise forms.ValidationError('This username has already been used')
 
 	""" Override the default save method to use set_password method to convert text to hashed """
 	def save(self, commit=True):
@@ -197,8 +197,8 @@ class UserRegisterForm(forms.ModelForm):
 		user.set_password(self.cleaned_data.get("password"))
 
 		# Set the username of the user
-		username = self.cleaned_data.get("username")
-		user.username = username
+		# username = self.cleaned_data.get("username")
+		# user.username = username
 		if commit:
 			user.save()
 		return user

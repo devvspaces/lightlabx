@@ -1,3 +1,5 @@
+import stripe
+
 from django.forms import ValidationError
 from django.conf import settings
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
@@ -104,7 +106,7 @@ class Membership(models.Model):
         ('Lifetime', 'lifetime',),
     )
     slug = models.SlugField(max_length=255)
-    member_type = models.CharField(choices=TYPES, max_length=1)
+    member_type = models.CharField(choices=TYPES, max_length=10)
     price = models.FloatField()
     stripe_plan_id = models.CharField(max_length=255)
 
@@ -128,15 +130,15 @@ class Subscription(models.Model):
         return f'Subscription {self.user_membership.user.username}'
 
 
-# Creating signals
-@receiver(post_save, sender=User)
-def post_save_create_membership(sender, instance, created, **kwargs):
-    if created:
-        UserMembership.objects.get_or_create(user=instance)
+# Creating signalsdasdfadfadfasdsd
+# @receiver(post_save, sender=User)
+# def post_save_create_membership(sender, instance, created, **kwargs):
+#     if created:
+#         UserMembership.objects.get_or_create(user=instance)
 
-    user_membership, created = UserMembership.objects.get_or_create(user=instance)
+#     user_membership, created = UserMembership.objects.get_or_create(user=instance)
 
-    if user_membership.stripe_customer_id == None or user_membership.stripe_customer_id == '':
-        new_customer_id = stripe.Customer.create(email=instance.email)
-        user_membership.stripe_customer_id = new_customer_id['id']
-        user_membership.save()
+#     if user_membership.stripe_customer_id == None or user_membership.stripe_customer_id == '':
+#         new_customer_id = stripe.Customer.create(email=instance.email)
+#         user_membership.stripe_customer_id = new_customer_id['id']
+#         user_membership.save()

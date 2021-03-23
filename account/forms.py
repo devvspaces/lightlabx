@@ -174,7 +174,7 @@ class UserRegisterForm(forms.ModelForm):
 	username = forms.CharField(max_length=225)
 	class Meta:
 		model=User
-		fields=("email","password")
+		fields=("email","password", "username",)
 
 	# Cleaning password one to check if all validations are met
 	def clean_password(self):
@@ -185,7 +185,7 @@ class UserRegisterForm(forms.ModelForm):
 
 	# Clean username
 	def clean_username(self):
-		username = self.data.get("username")
+		username = self.cleaned_data.get("username")
 
 		username_exist = User.objects.filter(username=username).exists()
 		if username_exist:
@@ -197,7 +197,7 @@ class UserRegisterForm(forms.ModelForm):
 		user.set_password(self.cleaned_data.get("password"))
 
 		# Set the username of the user
-		username = self.data.get("username")
+		username = self.cleaned_data.get("username")
 		user.username = username
 		if commit:
 			user.save()

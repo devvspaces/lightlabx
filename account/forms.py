@@ -31,16 +31,16 @@ class ProfileForm(forms.Form):
 
 		# Get the user object
 		idx = cleaned_data.get('id')
-		user = get_object_or_404(User, id=id)
+		user = get_object_or_404(User, id=idx)
 
 		email = cleaned_data.get('email')
 		username = cleaned_data.get('username')
 
-		email_exist = User.objects.filter(email=email).exclude(id=id).exists()
+		email_exist = User.objects.filter(email=email).exclude(id=idx).exists()
 		if email_exist:
 			self.add_error('email', 'This email has already been used')
         
-		username_exist = User.objects.filter(username=username).exclude(id=id).exists()
+		username_exist = User.objects.filter(username=username).exclude(id=idx).exists()
 		if username_exist:
 			self.add_error('username', 'This username has already been used')
 		
@@ -171,7 +171,7 @@ class UserRegisterForm(forms.ModelForm):
 							widget=forms.PasswordInput,
 							min_length=8,
 							help_text=password_validation.password_validators_help_text_html())
-	username = forms.CharField(max_length=225)
+	# username = forms.CharField(max_length=225)
 	class Meta:
 		model=User
 		fields=("email","password", "username",)

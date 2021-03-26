@@ -154,38 +154,38 @@ else:
     STRIPE_SECRET_KEY = ''
 
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'loggers': {
-        'dev': {
-            'handlers': ['dev'],
-            'level': 'DEBUG',
-        },
-        'dev.error': {
-            'handlers': ['dev_error'],
-            'level': 'WARNING',
-            'propagate': False,
-        },
-    },
-    'handlers': {
-        'dev': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': './logs/django/debugs.log',
-            'formatter' : 'simpleRe',
-        },
-        'dev_error': {
-            'level': 'WARNING',
-            'class': 'logging.FileHandler',
-            'filename': './logs/django/errors.log',
-            'formatter' : 'simpleRe',
-        },
-    },
-    'formatters':{
-        'simpleRe':{
-            'format': '{levelname}:{asctime}:{name}:{message}',
-            'style': '{',
-        }
-    }
-}
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'loggers': {
+#         'dev': {
+#             'handlers': ['dev'],
+#             'level': 'DEBUG',
+#         },
+#         'dev.error': {
+#             'handlers': ['dev_error'],
+#             'level': 'WARNING',
+#             'propagate': False,
+#         },
+#     },
+#     'handlers': {
+#         'dev': {
+#             'level': 'DEBUG',
+#             'class': 'logging.FileHandler',
+#             'filename': './logs/django/debugs.log',
+#             'formatter' : 'simpleRe',
+#         },
+#         'dev_error': {
+#             'level': 'WARNING',
+#             'class': 'logging.FileHandler',
+#             'filename': './logs/django/errors.log',
+#             'formatter' : 'simpleRe',
+#         },
+#     },
+#     'formatters':{
+#         'simpleRe':{
+#             'format': '{levelname}:{asctime}:{name}:{message}',
+#             'style': '{',
+#         }
+#     }
+# }

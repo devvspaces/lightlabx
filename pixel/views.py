@@ -22,8 +22,8 @@ from pixellab import pixel_analyse
 
 
 # Set the loggers
-debugger = logging.getLogger('dev')
-choke = logging.getLogger('dev.error')
+# debugger = logging.getLogger('dev')
+# choke = logging.getLogger('dev.error')
 
 
 # Admin add image view

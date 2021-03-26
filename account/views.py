@@ -36,7 +36,8 @@ def verification_message(request, user, template):
 class Register(FormView):
     template_name = 'account/signup.html'
     extra_context = {
-        'title': 'Register'
+        'title': 'Register',
+        'view_id': 'account',
     }
     form_class = UserRegisterForm
 
@@ -72,7 +73,8 @@ class Register(FormView):
 class Login(FormView):
     template_name = 'account/login.html'
     extra_context = {
-        'title': 'Login'
+        'title': 'Login',
+        'view_id': 'account',
     }
     form_class = LoginForm
 
@@ -131,7 +133,8 @@ def activate_email(request, uidb64, token):
 class Profile(LoginRequiredMixin, UpdateView):
     template_name = 'account/profile.html'
     extra_context = {
-        'title': 'My Account'
+        'title': 'My Account',
+        'view_id': 'account',
     }
     form_class = ProfileForm
 
@@ -140,7 +143,7 @@ class Profile(LoginRequiredMixin, UpdateView):
         request = self.request
         form = self.get_form_class()
         form = form({
-            'id': request.user.id,
+            'idx': request.user.id,
             'email': request.user.email,
             'username': request.user.username,
         })
@@ -157,7 +160,7 @@ class Profile(LoginRequiredMixin, UpdateView):
         context = self.get_context_data()
 
         cloned = request.POST.copy()
-        cloned['id'] = request.user.id
+        cloned['idx'] = request.user.id
 
         dform = self.get_form_class()
         form = dform(cloned)
@@ -176,7 +179,8 @@ class Profile(LoginRequiredMixin, UpdateView):
 class ChangePassword(LoginRequiredMixin, UpdateView):
     template_name = 'account/change_password.html'
     extra_context = {
-        'title': 'Change Password'
+        'title': 'Change Password',
+        'view_id': 'account',
     }
     form_class = ChangePasswordForm
 
@@ -220,6 +224,7 @@ class ResetPasswordFormPage(FormView):
     template_name = 'account/reset_password_form.html'
     extra_context = {
         'title': 'Reset Password',
+        'view_id': 'account',
     }
     form_class = ResetPasswordValidateEmailForm
 
@@ -263,6 +268,7 @@ class ResetPasswordVerify(FormView):
     template_name = 'account/reset_password_page.html'
     extra_context = {
         'title': 'Reset your password',
+        'view_id': 'account',
     }
     form_class = ForgetPasswordForm
 

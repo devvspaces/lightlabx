@@ -8,36 +8,11 @@
             <h3 class="head">Our Example Photos</h3>
             <p class="support-text">Below you'll find a set of example photos with complete metadata attached. Click on any of them to view settings.</p>
             <div class="images_list">
-                <div class="image_box">
-                    <img src="{% static 'img/20160511-DSC02002_thumb.jpg' %}" alt="">
-                </div>
-                <div class="image_box">
-                    <img src="{% static 'img/20160509-DSC01861_thumb.jpg' %}" alt="">
-                </div>
-                <div class="image_box">
-                    <img src="{% static 'img/20180826-DSC07924_thumb.jpg' %}" alt="">
-                </div>
-                <div class="image_box">
-                    <img src="{% static 'img/20201105-DSCF5206_thumb.jpg' %}" alt="">
-                </div>
-                <div class="image_box">
-                    <img src="{% static 'img/20160914-DSC06849_thumb.jpg' %}" alt="">
-                </div>
-                <div class="image_box">
-                    <img src="{% static 'img/20160511-DSC02002_thumb.jpg' %}" alt="">
-                </div>
-                <div class="image_box">
-                    <img src="{% static 'img/20160509-DSC01861_thumb.jpg' %}" alt="">
-                </div>
-                <div class="image_box">
-                    <img src="{% static 'img/20180826-DSC07924_thumb.jpg' %}" alt="">
-                </div>
-                <div class="image_box">
-                    <img src="{% static 'img/20201105-DSCF5206_thumb.jpg' %}" alt="">
-                </div>
-                <div class="image_box">
-                    <img src="{% static 'img/20160914-DSC06849_thumb.jpg' %}" alt="">
-                </div>
+                {% for i in images %}
+                    <div class="image_box">
+                        <img class="linked_images" src="{{i.image.url}}" alt="" link_to='{{i.slugid}}'>
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </section>

@@ -1,0 +1,48 @@
+{% extends "interface/base.html" %}
+{% load static %}
+
+
+{% block contents %}
+    <!-- Page Title -->
+    <section class="page-title text-center">
+    <div class="container">
+        <div class="page-title__holder">
+        <h1 class="page-title__title">Add Image Form</h1>
+        <p class="page-title__subtitle">You can use this form to add a new image to the gallery section</p>
+        </div>
+    </div>
+    </section> <!-- end page title -->
+
+    <!-- Contact -->
+    <section class="section-wrap">
+    <div class="container">
+        <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="contact box-shadow-large offset-top-171">
+
+            <!-- Contact Form -->
+            <form id="contact-form" class="contact-form mt-30 mb-30" method="POST"  enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row row-30 justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="form-group">
+                            <label for="image">Image <abbr title="required" class="required">*</abbr></label>
+                            <input name="image" id="image" type="file" value="{% if form.image.value %}{{form.image.value}}{% endif %}">
+                            {% if form.image.errors %}
+                                {% for i in form.image.errors %}
+                                    <small class="text-danger form-error">{{i}}</small>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
+
+                </div>
+
+                <input type="submit" class="btn btn--lg btn--color btn--wide btn--button" value="Submit" id="submit-message">
+            </form>
+            </div>
+        </div>            
+        </div>
+    </div>
+    </section> <!-- end contact -->
+{% endblock %}

@@ -5,7 +5,7 @@ from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.contrib.auth.hashers import check_password
 from django.shortcuts import get_object_or_404
 
-from .models import LightLabImage
+from .models import LightLabImage, Gallery
 
 
 
@@ -20,6 +20,20 @@ class PixelImageForm(forms.Form):
 
         # Creating the LightImage obj
         image_obj = LightLabImage(image=image, name=name)
+
+        if commit:
+            image_obj.save()
+        
+        return image_obj
+
+class AddImageForm(forms.ModelForm):
+    class Meta:
+        model = Gallery
+        fields = ('image',)
+
+    def save(self, commit=True):
+        # Call the built in save
+        image_obj = super(AddImageForm, self).save(commit=False)
 
         if commit:
             image_obj.save()

@@ -2720,6 +2720,9 @@ header .flex-parent {
 	margin-top: 3rem;
 	font-size: 2.5rem;
 }
+.linked_images{
+	cursor: pointer;
+}
 #gallery p.support-text{
 	margin-bottom: 2rem;
 }
@@ -3121,6 +3124,62 @@ header .flex-parent {
 #processing.active{
 	opacity: 1;
 	z-index: 1000;
+}
+
+
+
+/*Download xml preset*/
+#xml_button{
+	position: relative;
+	margin-bottom: 1.5rem;
+}
+#xml_button .btn{
+	padding: .4rem .6rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+#xml_button .btn .icon{
+	border-left: 1px solid #fff;
+	padding-left: .3rem;
+	margin-left: .3rem;
+}
+#xml_button .xml_selections{
+	margin-top: .5rem;
+	height: 0px;
+	opacity: 0;
+	background: #eaebec;
+	overflow: hidden;
+	border-radius: .6rem;
+	transition: .5s;
+}
+#xml_button .xml_selections.active{
+	opacity: 1;
+}
+#xml_button .xml_selections .listed{
+	padding: 1rem .8rem;
+	border-bottom: 1px solid #a5a5a5;
+	transition: .3s;
+}
+#xml_button .xml_selections .listed:hover{
+	background: #c3cbd8;
+}
+#xml_button .xml_selections .listed:last-child{
+	border: none;
+}
+#xml_button .xml_selections p{
+	font-size: 12px;
+}
+#xml_button .xml_selections h5{
+	font-size: 14px;
+	opacity: .8;
+	transition: .3s;
+	color: #02092f;
+	margin-bottom: 0;
+}
+#xml_button .xml_selections h5:hover{
+	cursor: pointer;
+	opacity: 1;
 }
 
 

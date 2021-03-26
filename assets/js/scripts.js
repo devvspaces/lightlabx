@@ -199,6 +199,26 @@
   });
 
 
+  // Code to make xml preset download button dropdown
+  let xmlDrop = document.querySelector('#xml_button .xml_selections');
+  let xmlButton = document.querySelector('#xml_button .btn');
+
+  try{
+    $(xmlButton).click(function(e) {
+      if (xmlDrop.classList.contains('active')){
+        xmlDrop.classList.remove('active')
+        xmlDrop.style.height = '0px'
+      } else {
+        xmlDrop.classList.add('active')
+        let realHeight = xmlDrop.scrollHeight+'px'
+        xmlDrop.style.height = realHeight
+      }
+    });
+  } catch(e){
+    console.log(e)
+  }
+
+
   // Codes for ajax setup for get and post requests to backend
   function getCookie(name) {
     let cookieValue = null;
@@ -247,6 +267,11 @@
   let submit_form = $('#submit_form')
   let img_text = $('.img_text')
   let processing = $('#processing')
+  // let the_image_name = document.querySelector('.the_image_name')
+
+
+  // I want to use this to store data from the server globally accessible
+  let theImageData = ''
 
   // The image tag to show the selected image
   var the_image_view = document.getElementById("the_image_view");
@@ -270,36 +295,40 @@
 
     jQuery.noConflict();	
 	  let formdata = new FormData();
-    src.addEventListener("change",function() {
-      // fill fr with image data    
-      fr.readAsDataURL(src.files[0]);
+    try{
+      src.addEventListener("change",function() {
+        // fill fr with image data    
+        fr.readAsDataURL(src.files[0]);
 
-      // Make the the_image_view displayed
-      the_image_view.classList.remove('d-none')
+        // Make the the_image_view displayed
+        the_image_view.classList.remove('d-none')
 
-      // Display none every other image
-      img_text.css('display','none')
+        // Display none every other image
+        img_text.css('display','none')
 
-      // Send the image to the server
-      var file = this.files[0];
-      if (formdata) {
-        formdata.append("pixel_image", file);
+        // Send the image to the server
+        var file = this.files[0];
+        if (formdata) {
+          formdata.append("pixel_image", file);
 
-        let thisURL = window.location.href
-        $.ajax({
-          url: thisURL,
-          type: "POST",
-          data: formdata,
-          processData: false,
-          contentType: false,
-          success: handleFormSuccess,
-          error: handleFormError
-        });
+          let thisURL = window.location.href
+          $.ajax({
+            url: thisURL,
+            type: "POST",
+            data: formdata,
+            processData: false,
+            contentType: false,
+            success: handleFormSuccess,
+            error: handleFormError
+          });
 
-        // Show the processing modal
-        processing.addClass('active')
-      }
-    });
+          // Show the processing modal
+          processing.addClass('active')
+        }
+      });
+    } catch (e){
+      console.log(e)
+    }
   }
 
   showImage(image_file,the_image_view);
@@ -323,6 +352,9 @@
         el.innerText = data[i]
       }
     })
+
+    // Set the global theImageData
+    theImageData = data
   }
   
   function handleFormError(jqXHR, textStatus){
@@ -349,5 +381,84 @@
   }
 
 
+  // Get all linked images and when they are clicked it should move to the required lighteditor page
+  let linked_images = document.querySelectorAll('.linked_images')
+  $(linked_images).click(function(e){
+    let imageSlug = this.getAttribute('link_to')
+    let imageLink = window.location.origin + '/app/light_editor/'+ imageSlug +'/'
+    window.location.href = imageLink
+  })
+
+
+  
+  try{
+    // If exif data is passed here we want to add it to a variable
+    let filler = document.querySelector('#filler').innerText
+    // Check if filler was set
+    if (filler.length > 10){
+      let data = JSON.parse(filler)
+
+      // Handle the data passed
+      handleFormSuccess(data, 200, data)
+
+      // Make the the_image_view displayed
+      the_image_view.classList.remove('d-none')
+
+      // Display none every other image
+      img_text.css('display','none')
+    }
+  } catch(e){
+    console.log(e)
+  }
+
+
+  // Instantiate the file
+  let fileContent = "data:text/xmp;charset=utf-8,";
+
+  // The pully marker
+  let pullyMarker = {
+    'lrtemplate': 'lrtemplate',
+    'xmp_extended': 'xmp',
+    'xmp_raw': 'xmp'
+  }
+
+
+  // Code to download the format when clicked
+  let preset_btns = document.querySelectorAll('#xml_button .xml_selections h5')
+  $(preset_btns).click(function (e) {
+    let pully = this.getAttribute('pully')
+    if (pully){
+      // Build the url to make the request to
+      let thisURL = window.location.origin+'/app/auto_gen/presets/'+ theImageData['image_id'] +'/'+pully
+      console.log(thisURL)
+
+      // Edit the fileContent type depending on the pully used
+      fileContent = "data:text/"+pullyMarker[pully]+";charset=utf-8,"
+
+      $.ajax({
+        url: thisURL,
+        type: "GET",
+        success: handlePresetSuccess,
+        error: function (jqXHR, textStatus) {
+          alert('Can\'t download')
+        }
+      });
+    }
+  })
+
+
+  // Code to make download csv file button download csv
+  function handlePresetSuccess(data, textStatus, jqXHR){
+    fileContent = fileContent + data['file_data']
+    var encodedUri = encodeURI(fileContent);
+    var link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", data['file_name']);
+    link.style.display = 'none';
+    document.body.appendChild(link); // Required for FF
+  
+    link.click(); // This will download the data file named "my_data.ext".
+    // alert('Downloading Started')
+  }
 
 })(jQuery);

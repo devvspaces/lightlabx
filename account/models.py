@@ -61,7 +61,7 @@ class User(AbstractBaseUser):
     # Field for disabled accounts
     disabled = models.BooleanField(default=False)
 
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['username']
     USERNAME_FIELD = "email"
 
     objects = UserManager()

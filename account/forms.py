@@ -30,7 +30,7 @@ class ProfileForm(forms.Form):
 		cleaned_data = super(ProfileForm, self).clean()
 
 		# Get the user object
-		idx = cleaned_data.get('id')
+		idx = cleaned_data.get('idx')
 		user = get_object_or_404(User, id=idx)
 
 		email = cleaned_data.get('email')
@@ -49,7 +49,7 @@ class ProfileForm(forms.Form):
 	def save(self, commit=True):
 		cleaned_data = self.clean()
 		# Get the user object
-		idx = cleaned_data.get('id')
+		idx = cleaned_data.get('idx')
 		user = get_object_or_404(User, id=idx)
 
 		email = cleaned_data.get('email')
@@ -174,7 +174,7 @@ class UserRegisterForm(forms.ModelForm):
 	# username = forms.CharField(max_length=225)
 	class Meta:
 		model=User
-		fields=("email","password", "username",)
+		fields=("email", "password", "username",)
 
 	# Cleaning password one to check if all validations are met
 	def clean_password(self):

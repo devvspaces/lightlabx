@@ -3,6 +3,9 @@
 
 
 {% block contents %}
+<!-- Lets add the exif into a hidden text if it was passed -->
+<p class="d-none" id="filler">{% if exif %}{{exif}}{% endif %}</p>
+
     <section class="section-wrap">
         <div class="container full_screen">
             <div id="main_ui">
@@ -23,7 +26,11 @@
                             <a href="#" class="btn btn--lg btn--alt-color btn--small btn--button img_text">Browse files</a>
 
                             <!-- THe image details -->
-                            <img src="" alt="" id="the_image_view" class="d-none">
+                            {% if image_link %}
+                                <img src="{{image_link}}" alt="" id="the_image_view" class="d-none">
+                            {% else %}
+                                <img src="" alt="" id="the_image_view" class="d-none">
+                            {% endif %}
                             <p class="the_image_name d-none"></p>
 
                             <!-- Errors box -->
@@ -34,18 +41,11 @@
                         <div class="example_gallery">
                             <h6 class="head">Try <a href="{% url 'gallery' %}">example images</a></h6>
                             <div class="images">
-                                <div class="image_box">
-                                    <img src="{% static 'img/20160511-DSC02002_thumb.jpg' %}" alt="">
-                                </div>
-                                <div class="image_box">
-                                    <img src="{% static 'img/20160511-DSC02002_thumb.jpg' %}" alt="">
-                                </div>
-                                <div class="image_box">
-                                    <img src="{% static 'img/20160511-DSC02002_thumb.jpg' %}" alt="">
-                                </div>
-                                <div class="image_box">
-                                    <img src="{% static 'img/20160511-DSC02002_thumb.jpg' %}" alt="">
-                                </div>
+                                {% for i in little_images %}
+                                    <div class="image_box">
+                                        <img class="linked_images" src="{{i.image.url}}" alt="" link_to='{{i.slugid}}'>
+                                    </div>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
@@ -55,28 +55,28 @@
                     <div class="inner_box">
                         <div class="data_value">
                             <p>Camera model</p>
-                            <p class="value"><span class="data" data-key="Model">—</span></p>
+                            <p class="value"><span class="data" data-key="Camera Model">—</span></p>
                         </div>
                         <div class="data_value">
                             <p>Lens</p>
-                            <p class="value"><span class="data" data-key="Software">—</span></p>
+                            <p class="value"><span class="data" data-key="LensModel">—</span></p>
                         </div>
                         <div class="data_value flexed">
                             <div class="sided_box">
                                 <p>Focal length</p>
-                                <p class="value"><span class="data" data-key="FocalLength">—</span></p>
+                                <p class="value"><span class="data" data-key="FocalLength">—</span>mm</p>
                             </div>
                             <div class="sided_box">
                                 <p>Aperture</p>
-                                <p class="value">ƒ/<span class="data" data-key="ApertureValue">—</span></p>
+                                <p class="value">ƒ/<span class="data" data-key="FNumber">—</span></p>
                             </div>
                             <div class="sided_box">
                                 <p>Shutter speed</p>
-                                <p class="value"><span class="data" data-key="ShutterSpeedValue">—</span></p>
+                                <p class="value"><span class="data" data-key="ExposureTime">—</span>s</p>
                             </div>
                             <div class="sided_box">
                                 <p>ISO</p>
-                                <p class="value"><span class="data" data-key="ISOSpeedRatings">—</span>s</p>
+                                <p class="value"><span class="data" data-key="ISOSpeedRatings">—</span></p>
                             </div>
                         </div>
                         <div class="data_value">
@@ -89,7 +89,7 @@
                         </div>
                         <div class="data_value">
                             <p>Exposure compensation</p>
-                            <p class="value"><span class="data" data-key="Software">—</span></p>
+                            <p class="value"><span class="data" data-key="ExposureBiasValue">—</span></p>
                         </div>
                         <div class="data_value">
                             <p>Flash</p>
@@ -105,13 +105,39 @@
                         </div>
                         <div class="data_value">
                             <p>Copyright</p>
-                            <p class="value"><span class="data" data-key="Make">—</span></p>
+                            <p class="value"><span class="data" data-key="ProfileCopyright">—</span></p>
                         </div>
                     </div>
                 </div>
                 <div class="main_box filters">
                     <h5 class="heading">Lightroom Settings</h5>
                     <div class="inner_box">
+                        <div id="xml_button">
+                            <button class="btn btn--alt-color">Download Settings as XMP Preset<span class="icon"><i class="fas fa-caret-square-down"></i></span></button>
+                            <div class="xml_selections">
+                                <div class="listed">
+                                    <h5 pully='lrtemplate'>Download .lrtemplate Preset</h5>
+                                    <p>old preset format</p>
+                                </div>
+
+                                <div class="listed">
+                                    <h5 pully='xmp_extended'>Download Extended Preset</h5>
+                                    <p>includes White Balance, Exposure, Sharpening, Lens Correction</p>
+                                </div>
+                                <div class="listed">
+                                    <h5>Download DNG Preset for LR mobile</h5>
+                                    <p>Generates a DNG file you can use as a preset in Lightroom mobile.</p>
+                                </div>
+                                <div class="listed">
+                                    <h5>Download Extended DNG Preset</h5>
+                                    <p>includes White Balance and Exposure settings</p>
+                                </div>
+                                <div class="listed">
+                                    <h5 pully='xmp_raw'>Download Raw XMP Settings</h5>
+                                    <p>Use for reference only - this file will not work as a preset. It contains all settings exported by Lightroom (XMP sidecar file)</p>
+                                </div>
+                            </div>
+                        </div>
                         <div class="filter_box">
                             <h6 class="head">Basic</h6>
                             <p>White Balance</p>
@@ -650,4 +676,11 @@
             </div>
         </div>
     </section>
+{% endblock %}
+
+{% block extra_script %}
+    <!-- <script type="text/javascript">
+        // If exif data is passed here we want to add it to a variable
+        let filler = document.querySelector('#filler')
+    </script> -->
 {% endblock %}
